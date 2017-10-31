@@ -142,6 +142,7 @@ public class Entry {
   /**
    * @return A string including the value for all the fields.
    */
+  //TODO Create overwrite
   public String toString() {
     return  "[value=" + value + ", type=" + type + ", str=" + str + ", other=" + other + "]";
   }
@@ -149,6 +150,7 @@ public class Entry {
   /**
    * @return an integer value for the object.
    */
+  //TODO Create overwrite
   public int hashCode() {
     // formula for calculating hash code taken from Joshua Bloch's recommendations in "effective
     // java".

@@ -72,6 +72,7 @@ public class Stack {
    *
    * @return Returns a string of all the entries and the size of the stack.
    */
+  //TODO Create overwrite
   public String toString() {
     return "entries=" + entries.toString() + ", size=" + size;
   }
@@ -83,6 +84,7 @@ public class Stack {
    *              stack.
    * @return True if the stacks are equal and False if they are not equal.
    */
+  //TODO Create overwrite
   public Boolean equals(Stack stack) {
     return (this.size == stack.size && this.entries.equals(stack.entries));
   }
@@ -92,6 +94,7 @@ public class Stack {
    *
    * @return An integer value for the stack, comprised of the fields as integers.
    */
+  //TODO Create overwrite
   public int hashCode() {
     // formula for calculating hash code take from joshua bloch's recommendations in "effective
     // java".
