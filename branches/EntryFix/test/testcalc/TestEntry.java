@@ -1,6 +1,7 @@
 package testcalc;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import calc.BadType;
@@ -120,5 +121,13 @@ public class TestEntry {
     entry = new Entry(123456);
     Entry otherEntry = new Entry(123456);
     assertTrue("hashCode = otherEntry.hashCode", entry.hashCode() == otherEntry.hashCode());
+  }
+
+  // Test 27 - Tests if the equals method returns false when the object is null
+  @Test
+  public void equalNull() {
+    Object object = null;
+    entry = new Entry(123456);
+    assertFalse("entry = null", entry.equals(object));
   }
 }

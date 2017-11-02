@@ -108,30 +108,43 @@ public class Entry {
    * This equals method is to detect when one Entry is equal to the other, when the type is the same
    * and the value/string/symbol are the same.
    *
-   * @param entry the entry that we want to check if they are equal.
+   * @param object the object that we want to check if they are equal.
    * @return Returns a boolean true for they are equal, and false for not equal.
    * @throws BadType as the getters are used throws this exception if the wrong getter is used for
    *                 the type.
    */
-  //TODO Remove return true and return the equation, use auto-generated type
-  public Boolean equals(Entry entry) throws BadType {
+  @Override
+  public boolean equals(Object object)  {
+    if (object == null) {
+      return false;
+    }
+    if (!(object instanceof Entry)) {
+      return false;
+    }
+    Entry entry = (Entry)object;
     if (entry.getType() == this.getType()) {
       switch (type) {
         case NUMBER:
-          if (entry.getValue() == this.getValue()) {
-            return true;
+          try {
+            return (entry.getValue() == this.getValue());
+          } catch (BadType badType) {
+            System.err.println("Caught: " + badType.getMessage());
+            return false;
           }
-          break;
         case STRING:
-          if (entry.getString().equals(this.getString())) {
-            return true;
+          try {
+            return (entry.getString().equals(this.getString()));
+          } catch (BadType badType) {
+            System.err.println("Caught: " + badType.getMessage());
+            return false;
           }
-          break;
         case SYMBOL:
-          if (entry.getSymbol() == this.getSymbol()) {
-            return true;
+          try {
+            return (entry.getSymbol() == this.getSymbol());
+          } catch (BadType badType) {
+            System.err.println("Caught: " + badType.getMessage());
+            return false;
           }
-          break;
         default:
           return false;
       }
@@ -142,7 +155,7 @@ public class Entry {
   /**
    * @return A string including the value for all the fields.
    */
-  //TODO Create overwrite
+  @Override
   public String toString() {
     return  "[value=" + value + ", type=" + type + ", str=" + str + ", other=" + other + "]";
   }
@@ -150,7 +163,7 @@ public class Entry {
   /**
    * @return an integer value for the object.
    */
-  //TODO Create overwrite
+  @Override
   public int hashCode() {
     // formula for calculating hash code taken from Joshua Bloch's recommendations in "effective
     // java".
