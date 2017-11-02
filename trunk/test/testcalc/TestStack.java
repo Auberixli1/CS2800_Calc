@@ -164,4 +164,20 @@ public class TestStack {
 
     assertTrue("equal hash codes", stack.hashCode() == otherStack.hashCode());
   }
+
+  // Test 26 - Tests if the equal method returns false if checking against a null object
+  @Test
+  public void equalNull() {
+    Object obj = null;
+
+    assertFalse("false obj = null", stack.equals(obj));
+  }
+
+  // Test 27 - Tests if the equal method returns false if checking a stack and a entry are equal
+  @Test
+  public void equalStackEntry() {
+    Entry entry = new Entry(123456);
+
+    assertFalse("entry=stack", stack.equals(entry));
+  }
 }
