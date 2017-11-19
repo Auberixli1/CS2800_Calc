@@ -4,8 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import calc.BadType;
-import calc.EmptyStack;
+import calc.BadEntryTypeException;
+import calc.EmptyStackException;
 import calc.Entry;
 import calc.Stack;
 import org.junit.Before;
@@ -24,7 +24,7 @@ public class TestStack {
   // Started with faking the value of the top so it returned 1, then went on to implement pop and
   // returning the entry field top. I started with using just one entry
   @Test
-  public void pushThenTop() throws BadType, EmptyStack {
+  public void pushThenTop() throws BadEntryTypeException, EmptyStackException {
     Entry entry = new Entry(1);
     stack.push(entry);
     assertTrue("Push then top", 1 == stack.top().getValue());
@@ -55,7 +55,7 @@ public class TestStack {
   // removed from the stack
   // Implemented some code to remove one from size
   @Test
-  public void pushThenPopSize() throws EmptyStack {
+  public void pushThenPopSize() throws EmptyStackException {
     Entry entry = new Entry(123456);
     stack.push(entry);
     stack.pop();
@@ -67,7 +67,7 @@ public class TestStack {
   // Started with faking the return by creating the exact same entry on the return, then changed
   // that to get the actual entry which was pushed
   @Test
-  public void pushThenPopSame() throws EmptyStack {
+  public void pushThenPopSame() throws EmptyStackException {
     Entry entry = new Entry(123456);
     stack.push(entry);
     Entry popped = stack.pop();
@@ -77,7 +77,7 @@ public class TestStack {
   // Test 16 - Tests pushing two items on to the stack then popping both and checking that the value
   // of the first one is correct
   @Test
-  public void pushTwicePopTwice() throws EmptyStack {
+  public void pushTwicePopTwice() throws EmptyStackException {
     Entry valueEntry = new Entry(123456);
     stack.push(valueEntry);
     Entry stringEntry = new Entry("Test");
@@ -92,7 +92,7 @@ public class TestStack {
   // Test 17 - Tests the pop order
   // Changed the array to a list of entries, reformatted push, pop and top to use the ArrayList.
   @Test
-  public void popOrder() throws EmptyStack {
+  public void popOrder() throws EmptyStackException {
     Entry[] entries = new Entry[5];
 
     for (int i = 0; i < 5; i++) {
@@ -105,18 +105,18 @@ public class TestStack {
     }
   }
 
-  // Test 18 - Tests EmptyStack Exception on pop
+  // Test 18 - Tests EmptyStackException Exception on pop
   // Started with reformatting the pop method to throw the error, then created the exception that
   // will be thrown
-  @Test(expected = EmptyStack.class)
-  public void emptyStackPop() throws EmptyStack {
+  @Test(expected = EmptyStackException.class)
+  public void emptyStackPop() throws EmptyStackException {
     stack.pop();
   }
 
-  // Test 19 - Tests the EmptyStack Exception on top
+  // Test 19 - Tests the EmptyStackException Exception on top
   // Reformatted top to implement the exception
-  @Test(expected = EmptyStack.class)
-  public void emptyStackTop() throws EmptyStack {
+  @Test(expected = EmptyStackException.class)
+  public void emptyStackTop() throws EmptyStackException {
     stack.top();
   }
 
@@ -130,8 +130,8 @@ public class TestStack {
     entry = new Entry("Test");
     stack.push(entry);
     assertEquals("stackstr = stack.toString", stack.toString(),
-        "entries=[[value=123456.0, type=NUMBER, str=null, other=null], "
-            + "[value=0.0, type=STRING, str=Test, other=null]], size=2");
+        "entries=[[value=123456.0, entryType=NUMBER, str=null, other=null], "
+            + "[value=0.0, entryType=STRING, str=Test, other=null]], size=2");
   }
 
   // Test 23 - Tests if two stacks are equal.

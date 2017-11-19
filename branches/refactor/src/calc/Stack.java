@@ -33,11 +33,11 @@ public class Stack {
    * This method returns the top element of the stack.
    *
    * @return An entry object which is at the top of the stack.
-   * @throws EmptyStack this is thrown when top is called when the stack is empty.
+   * @throws EmptyStackException this is thrown when top is called when the stack is empty.
    */
-  public Entry top() throws EmptyStack {
+  public Entry top() throws EmptyStackException {
     if (size == 0) {
-      throw new EmptyStack();
+      throw new EmptyStackException();
     }
     return entries.get(entries.size() - 1);
   }
@@ -55,11 +55,11 @@ public class Stack {
    * This method returns the top entry of the stack and removes it.
    *
    * @return An entry that was on the top of the stack.
-   * @throws EmptyStack this is thrown when pop is called when the stack is empty.
+   * @throws EmptyStackException this is thrown when pop is called when the stack is empty.
    */
-  public Entry pop() throws EmptyStack {
+  public Entry pop() throws EmptyStackException {
     if (size == 0) {
-      throw new EmptyStack();
+      throw new EmptyStackException();
     }
     Entry temp = entries.get(entries.size() - 1);
     entries.remove(entries.size() - 1);
