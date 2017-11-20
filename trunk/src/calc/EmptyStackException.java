@@ -6,7 +6,7 @@ package calc;
  * @author Marcus Messer
  */
 
-public class EmptyStack extends Exception {
+public class EmptyStackException extends Exception {
 
   /**
    * Version ID of this exception, for use in the JVM when serialised.
@@ -16,8 +16,8 @@ public class EmptyStack extends Exception {
   /**
    * This constructor sends a message to the <code>Exception</code> class to throw the exception.
    */
-  public EmptyStack() {
-    super("EmptyStack: No elements inside the stack");
+  public EmptyStackException() {
+    super("EmptyStackException: No elements inside the stack");
   }
 
 }

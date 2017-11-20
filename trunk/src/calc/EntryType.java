@@ -5,7 +5,7 @@ package calc;
  *
  * @author Marcus Messer
  */
-public enum Type {
+public enum EntryType {
   /**
    * The enumeration for when the entry is a number.
    */

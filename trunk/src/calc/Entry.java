@@ -9,19 +9,19 @@ package calc;
 public class Entry {
 
   /**
-   * This field stores the value when the type of entry is a number.
+   * This field stores the value when the entryType of entry is a number.
    */
   private float value;
   /**
-   * This field stores the type of the entry.
+   * This field stores the entryType of the entry.
    */
-  private Type type;
+  private EntryType entryType;
   /**
-   * This field stores the string when the type of entry is a string.
+   * This field stores the string when the entryType of entry is a string.
    */
   private String str;
   /**
-   * This field stores the <code>Symbol</code> when the type of entry is a <code>Symbol</code>.
+   * This field stores the <code>Symbol</code> when the entryType of entry is a <code>Symbol</code>.
    */
   private Symbol other;
 
@@ -32,7 +32,7 @@ public class Entry {
    */
   public Entry(String str) {
     this.str = str;
-    this.type = Type.STRING;
+    this.entryType = EntryType.STRING;
   }
 
   /**
@@ -43,7 +43,7 @@ public class Entry {
 
   public Entry(float value) {
     this.value = value;
-    this.type = Type.NUMBER;
+    this.entryType = EntryType.NUMBER;
   }
 
   /**
@@ -53,40 +53,40 @@ public class Entry {
    */
   public Entry(Symbol other) {
     this.other = other;
-    this.type = Type.SYMBOL;
+    this.entryType = EntryType.SYMBOL;
   }
 
   /**
    * This getter returns the float that was inputed.
    *
    * @return The value that has been inputed.
-   * @throws BadType when the type isn't a number.
+   * @throws BadEntryTypeException when the entryType isn't a number.
    */
-  public float getValue() throws BadType {
-    if (getType() != Type.NUMBER) {
-      throw new BadType(Type.NUMBER, type);
+  public float getValue() throws BadEntryTypeException {
+    if (getEntryType() != EntryType.NUMBER) {
+      throw new BadEntryTypeException(EntryType.NUMBER, entryType);
     }
     return value;
   }
 
   /**
-   * This getter gets the type of data that was inputed.
+   * This getter gets the entryType of data that was inputed.
    *
-   * @return The type from the enum <code>Type</code>.
+   * @return The entryType from the enum <code>EntryType</code>.
    */
-  public Type getType() {
-    return type;
+  public EntryType getEntryType() {
+    return entryType;
   }
 
   /**
    * This getter gets the string that was inputed.
    *
    * @return The string that was entered by the user.
-   * @throws BadType when the type isn't a string.
+   * @throws BadEntryTypeException when the entryType isn't a string.
    */
-  public String getString() throws BadType {
-    if (getType() != Type.STRING) {
-      throw new BadType(Type.STRING, type);
+  public String getString() throws BadEntryTypeException {
+    if (getEntryType() != EntryType.STRING) {
+      throw new BadEntryTypeException(EntryType.STRING, entryType);
     }
     return str;
   }
@@ -95,23 +95,23 @@ public class Entry {
    * This getter gets the symbol that was inputed.
    *
    * @return The symbol that was entered.
-   * @throws BadType when the type isn't a symbol.
+   * @throws BadEntryTypeException when the entryType isn't a symbol.
    */
-  public Symbol getSymbol() throws BadType {
-    if (getType() != Type.SYMBOL) {
-      throw new BadType(Type.SYMBOL, type);
+  public Symbol getSymbol() throws BadEntryTypeException {
+    if (getEntryType() != EntryType.SYMBOL) {
+      throw new BadEntryTypeException(EntryType.SYMBOL, entryType);
     }
     return other;
   }
 
   /**
-   * This equals method is to detect when one Entry is equal to the other, when the type is the same
+   * This equals method is to detect when one Entry is equal to the other, when the entryType is the same
    * and the value/string/symbol are the same.
    *
    * @param object the object that we want to check if they are equal.
    * @return Returns a boolean true for they are equal, and false for not equal.
-   * @throws BadType as the getters are used throws this exception if the wrong getter is used for
-   *                 the type.
+   * @throws BadEntryTypeException as the getters are used throws this exception if the wrong getter is used for
+   *                 the entryType.
    */
   @Override
   public boolean equals(Object object)  {
@@ -122,27 +122,27 @@ public class Entry {
       return false;
     }
     Entry entry = (Entry)object;
-    if (entry.getType() == this.getType()) {
-      switch (type) {
+    if (entry.getEntryType() == this.getEntryType()) {
+      switch (entryType) {
         case NUMBER:
           try {
             return (entry.getValue() == this.getValue());
-          } catch (BadType badType) {
-            System.err.println("Caught: " + badType.getMessage());
+          } catch (BadEntryTypeException badEntryTypeException) {
+            System.err.println("Caught: " + badEntryTypeException.getMessage());
             return false;
           }
         case STRING:
           try {
             return (entry.getString().equals(this.getString()));
-          } catch (BadType badType) {
-            System.err.println("Caught: " + badType.getMessage());
+          } catch (BadEntryTypeException badEntryTypeException) {
+            System.err.println("Caught: " + badEntryTypeException.getMessage());
             return false;
           }
         case SYMBOL:
           try {
             return (entry.getSymbol() == this.getSymbol());
-          } catch (BadType badType) {
-            System.err.println("Caught: " + badType.getMessage());
+          } catch (BadEntryTypeException badEntryTypeException) {
+            System.err.println("Caught: " + badEntryTypeException.getMessage());
             return false;
           }
         default:
@@ -157,7 +157,7 @@ public class Entry {
    */
   @Override
   public String toString() {
-    return  "[value=" + value + ", type=" + type + ", str=" + str + ", other=" + other + "]";
+    return  "[value=" + value + ", entryType=" + entryType + ", str=" + str + ", other=" + other + "]";
   }
 
   /**
@@ -170,7 +170,7 @@ public class Entry {
     // in short provided by:
     // https://stackoverflow.com/questions/113511/best-implementation-for-hashcode-method
     int hash = 0;
-    hash += type.hashCode();
+    hash += entryType.hashCode();
     hash += Float.floatToIntBits(value);
 
     // If other or str are null they aren't included in the hash code, as null shouldn't change the

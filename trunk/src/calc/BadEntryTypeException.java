@@ -6,7 +6,7 @@ package calc;
  * @author Marcus Messer
  */
 
-public class BadType extends Exception {
+public class BadEntryTypeException extends Exception {
   /**
    * Version ID of this exception, for use in the JVM when serialised.
    */
@@ -18,7 +18,7 @@ public class BadType extends Exception {
    * @param expected the expected type for the method that throws the exception.
    * @param actual   the actual type of the Entry.
    */
-  public BadType(Type expected, Type actual) {
-    super("BadType: expected: " + expected + ", actual: " + actual);
+  public BadEntryTypeException(EntryType expected, EntryType actual) {
+    super("BadEntryTypeException: expected: " + expected + ", actual: " + actual);
   }
 }

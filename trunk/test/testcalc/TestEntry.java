@@ -4,10 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import calc.BadType;
+import calc.BadEntryTypeException;
 import calc.Entry;
 import calc.Symbol;
-import calc.Type;
+import calc.EntryType;
 import org.junit.Test;
 
 public class TestEntry {
@@ -19,7 +19,7 @@ public class TestEntry {
   // Started with faking the return value of getValue to '123456' then implemented the constructor
   // to set the field.
   @Test
-  public void floatSet() throws BadType {
+  public void floatSet() throws BadEntryTypeException {
     entry = new Entry(123456);
     assertTrue("Checks value = 123456", entry.getValue() == 123456);
   }
@@ -29,7 +29,7 @@ public class TestEntry {
   // Started with faking the return value of getString to "test" then implemented the constructor to
   // set the field
   @Test
-  public void strSet() throws BadType {
+  public void strSet() throws BadEntryTypeException {
     entry = new Entry("test");
     assertEquals("Checks string = test", entry.getString(), "test");
   }
@@ -38,18 +38,18 @@ public class TestEntry {
   // Started with writing the enum, then faking the return value of getSymbol, then got the
   // constructor to set the field
   @Test
-  public void symbolSet() throws BadType {
+  public void symbolSet() throws BadEntryTypeException {
     entry = new Entry(Symbol.LEFT_BRACKET);
     assertTrue("Checks other = LEFT_BRACKER", entry.getSymbol() == Symbol.LEFT_BRACKET);
   }
 
   // Test 4 - Tests the type getter when the type is a number
-  // Started with faking the return value of getType to return number, then changed it so the
+  // Started with faking the return value of getEntryType to return number, then changed it so the
   // constructor sets the type field
   @Test
   public void typeNumber() {
     entry = new Entry(123456);
-    assertTrue("Type = Number", entry.getType() == Type.NUMBER);
+    assertTrue("EntryType = Number", entry.getEntryType() == EntryType.NUMBER);
   }
 
   // Test 5 - Tests the type getter when the type is a string
@@ -57,7 +57,7 @@ public class TestEntry {
   @Test
   public void typeString() {
     entry = new Entry("test");
-    assertTrue("Type = String", entry.getType() == Type.STRING);
+    assertTrue("EntryType = String", entry.getEntryType() == EntryType.STRING);
   }
 
   // Test 6 - Tests the type getter when the type is a symbol
@@ -65,29 +65,29 @@ public class TestEntry {
   @Test
   public void typeSymbol() {
     entry = new Entry(Symbol.DIVIDE);
-    assertTrue("Type = Symbol", entry.getType() == Type.SYMBOL);
+    assertTrue("EntryType = Symbol", entry.getEntryType() == EntryType.SYMBOL);
   }
 
-  // Test 7 - Tests the BadType exception on the value getter
+  // Test 7 - Tests the BadEntryTypeException exception on the value getter
   // Reformatted the methods getValue method to throw the exception, then created the exception
-  @Test(expected = BadType.class)
-  public void badTypeValue() throws BadType {
+  @Test(expected = BadEntryTypeException.class)
+  public void badTypeValue() throws BadEntryTypeException {
     entry = new Entry(Symbol.DIVIDE);
     entry.getValue();
   }
 
-  // Test 8 - Tests the BadType exception on the string getter
+  // Test 8 - Tests the BadEntryTypeException exception on the string getter
   // Reformatted the getString method to throw the exception
-  @Test(expected = BadType.class)
-  public void badTypeString() throws BadType {
+  @Test(expected = BadEntryTypeException.class)
+  public void badTypeString() throws BadEntryTypeException {
     entry = new Entry(123456);
     entry.getString();
   }
 
-  // Test 9 - Tests the BadType exception of the symbol getter
+  // Test 9 - Tests the BadEntryTypeException exception of the symbol getter
   // Reformatted the getSymbol method to throw the exception
-  @Test(expected = BadType.class)
-  public void badTypeSymbol() throws BadType {
+  @Test(expected = BadEntryTypeException.class)
+  public void badTypeSymbol() throws BadEntryTypeException {
     entry = new Entry("test");
     entry.getSymbol();
   }
@@ -96,7 +96,7 @@ public class TestEntry {
   // Stated with faking the return value as true, then checked if they were the same type and
   // finally checked if the value was the same
   @Test
-  public void equalEntry() throws BadType {
+  public void equalEntry() throws BadEntryTypeException {
     entry = new Entry(123456);
     Entry valueEntry = new Entry(123456);
     assertTrue("Entry = Entry", entry.equals(valueEntry));
@@ -109,7 +109,7 @@ public class TestEntry {
   public void stringReturn() {
     entry = new Entry(123456);
     assertEquals("str = toString()", entry.toString(),
-        "[value=123456.0, type=NUMBER, str=null, other=null]");
+        "[value=123456.0, entryType=NUMBER, str=null, other=null]");
 
   }
 
