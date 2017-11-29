@@ -54,7 +54,7 @@ public class TestOperatorNode {
 
   //Test 53 - Tests the accept method
   @Test
-  public void accpetVisit() {
+  public void acceptVisit() {
     TreeNode node = new OperatorNode(Plus.getInstance(), null, null);
     CalcVisitor visitor = new CalcVisitor();
     node.accept(visitor);
