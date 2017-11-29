@@ -14,7 +14,7 @@ public class TestSubtract {
     assertEquals("4-2=2", 2, sub.calculate(4,2));
   }
 
-  //Test 32 - Tests if subtract can handle returning a negative answer
+  //Test 31 - Tests if subtract can handle returning a negative answer
   @Test
   public void subNumbersNegAns() {
     Operator sub = Subtract.getInstance();
