@@ -17,7 +17,13 @@ public class TestPlus {
 
   // Test 29 - Tests if the add class adds two numbers together
   @Test
-  public void addNumbers() {
-    assertEquals("2+2=4",4, plus.calculate(2, 2));
+  public void addInts() {
+    assertEquals("2+2=4",4, plus.calculate(2, 2), 0.0f);
+  }
+
+  //Test 35 - Tests with floats
+  @Test
+  public void addFloats() {
+    assertEquals("0.5 + 0.75 = 1.25", 1.25f, plus.calculate(0.5f, 0.75f), 0.0f);
   }
 }

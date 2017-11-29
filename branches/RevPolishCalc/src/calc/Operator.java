@@ -13,5 +13,5 @@ public interface Operator {
    * @param y The second (right hand) number.
    * @return The answer of the calculation.
    */
-  int calculate(int x, int y);
+  float calculate(float x, float y);
 }

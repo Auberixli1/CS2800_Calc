@@ -35,7 +35,7 @@ public class Plus implements Operator {
    * @return The sum of x and y.
    */
   @Override
-  public int calculate(int x, int y) {
+  public float calculate(float x, float y) {
     return x + y;
   }
 
