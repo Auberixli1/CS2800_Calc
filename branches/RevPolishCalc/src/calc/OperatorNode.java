@@ -13,7 +13,7 @@ public class OperatorNode implements TreeNode {
 
   @Override
   public void accept(Visitor visitor) {
-
+    visitor.visit(this);
   }
 
   @Override
