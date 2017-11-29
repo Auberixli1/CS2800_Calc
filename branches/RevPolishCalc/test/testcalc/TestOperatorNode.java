@@ -2,6 +2,7 @@ package testcalc;
 
 import static org.junit.Assert.assertEquals;
 
+import calc.CalcVisitor;
 import calc.Divide;
 import calc.NumberNode;
 import calc.Operator;
@@ -9,6 +10,7 @@ import calc.OperatorNode;
 import calc.Plus;
 import calc.Subtract;
 import calc.TreeNode;
+import calc.Visitor;
 import org.junit.Test;
 
 public class TestOperatorNode {
@@ -50,4 +52,12 @@ public class TestOperatorNode {
     assertEquals("rightNode=3", 3.0f, node.getRight().getValue());
   }
 
+  //Test 53 - Tests the accept method
+  @Test
+  public void accpetVisit() {
+    TreeNode node = new OperatorNode(Plus.getInstance(), null, null);
+    CalcVisitor visitor = new CalcVisitor();
+    node.accept(visitor);
+    assertEquals("node=vistiedNode", node, visitor.getCurNode());
+  }
 }

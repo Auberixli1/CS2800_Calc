@@ -2,11 +2,13 @@ package testcalc;
 
 import static org.junit.Assert.assertEquals;
 
+import calc.CalcVisitor;
 import calc.NumberNode;
 import calc.OperatorNode;
 import calc.Plus;
 import calc.Subtract;
 import calc.TreeNode;
+import calc.Visitor;
 import org.junit.Test;
 
 public class TestNumberNode {
@@ -43,5 +45,14 @@ public class TestNumberNode {
   public void rightGetterOp() {
     TreeNode node = new NumberNode(0, null, new OperatorNode(Subtract.getInstance(), null, null));
     assertEquals("rightNode=Sub", Subtract.getInstance(), node.getRight().getValue());
+  }
+
+  // Test 52 - Tests the accept method
+  @Test
+  public void acceptVisitor() {
+    TreeNode node = new NumberNode(0, null, null);
+    CalcVisitor visit = new CalcVisitor();
+    node.accept(visit);
+    assertEquals("acceptVisitor=node", node, visit.getCurNode());
   }
 }
