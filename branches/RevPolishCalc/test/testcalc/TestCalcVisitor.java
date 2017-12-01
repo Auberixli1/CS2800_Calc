@@ -24,7 +24,8 @@ public class TestCalcVisitor {
     visitor = new CalcVisitor();
     TreeNode node = new NumberNode(2, null, null);
     visitor.visit((NumberNode) node);
-    assertEquals("visitedNode=NumberNode", 2.0f, visitor.getCurNode().getValue());
+    NumberNode curNode = (NumberNode) visitor.getCurNode();
+    assertEquals("visitedNode=NumberNode", 2.0f, curNode.getValue(), 0.0f);
   }
 
   //Test 51 - Tests the visit for the Operator Node
@@ -33,6 +34,7 @@ public class TestCalcVisitor {
     visitor = new CalcVisitor();
     TreeNode node = new OperatorNode(Plus.getInstance(), null, null);
     visitor.visit((OperatorNode) node);
-    assertEquals("visitedNode=OpNode", Plus.getInstance(), visitor.getCurNode().getValue());
+    OperatorNode curNode = (OperatorNode) visitor.getCurNode();
+    assertEquals("visitedNode=OpNode", Plus.getInstance(), curNode.getValue());
   }
 }

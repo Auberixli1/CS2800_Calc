@@ -18,44 +18,49 @@ public class TestOperatorNode {
   //Test 43 - Tests the value getter
   @Test
   public void valueGetter() {
-    TreeNode node = new OperatorNode(Plus.getInstance(), null, null);
+    OperatorNode node = new OperatorNode(Plus.getInstance(), null, null);
     assertEquals("node=Plus", Plus.getInstance(), node.getValue());
   }
 
   //Test 44 - Tests the left getter using operator node
   @Test
   public void leftGetterOp() {
-    TreeNode node = new OperatorNode(null, new OperatorNode(Subtract.getInstance(),
+    OperatorNode node = new OperatorNode(null, new OperatorNode(Subtract.getInstance(),
         null, null), null);
-    assertEquals("leftNode=Sub", Subtract.getInstance(), node.getLeft().getValue());
+
+    OperatorNode leftNode = (OperatorNode) node.getLeft();
+    assertEquals("leftNode=Sub", Subtract.getInstance(), leftNode.getValue());
   }
 
   //Test 45 - Tests the right getter using an operator node
   @Test
   public void rightGetterOp() {
-    TreeNode node = new OperatorNode(null, null, new OperatorNode(Divide.getInstance(),
+    OperatorNode node = new OperatorNode(null, null, new OperatorNode(Divide.getInstance(),
         null, null));
-    assertEquals("rightNode=div", Divide.getInstance(), node.getRight().getValue());
+    OperatorNode rightNode = (OperatorNode) node.getRight();
+    assertEquals("rightNode=div", Divide.getInstance(), rightNode.getValue());
   }
 
   //Test 46 - Tests the left getter using number node
   @Test
   public void leftGetterNum() {
-    TreeNode node = new OperatorNode(null, new NumberNode(2, null, null), null);
-    assertEquals("leftNode=2", 2.0f, node.getLeft().getValue());
+    OperatorNode node = new OperatorNode(null, new NumberNode(2, null, null), null);
+    NumberNode leftNode = (NumberNode) node.getLeft();
+    assertEquals("leftNode=2", 2.0f, leftNode.getValue(), 0.0f);
   }
 
   //Test 47 - Tests the right getter using number node
   @Test
   public void rightGetterNum() {
-    TreeNode node = new OperatorNode(null, null, new NumberNode(3, null, null));
-    assertEquals("rightNode=3", 3.0f, node.getRight().getValue());
+    OperatorNode node = new OperatorNode(null, null, new NumberNode(3, null, null));
+    NumberNode rightNode = (NumberNode) node.getRight();
+    assertEquals("rightNode=3", 3.0f, rightNode.getValue(), 0.0f);
   }
 
   //Test 53 - Tests the accept method
   @Test
   public void acceptVisit() {
-    TreeNode node = new OperatorNode(Plus.getInstance(), null, null);
+    OperatorNode node = new OperatorNode(Plus.getInstance(), null, null);
     CalcVisitor visitor = new CalcVisitor();
     node.accept(visitor);
     assertEquals("node=vistiedNode", node, visitor.getCurNode());

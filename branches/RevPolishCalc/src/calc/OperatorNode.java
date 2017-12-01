@@ -41,17 +41,15 @@ public class OperatorNode implements TreeNode {
     visitor.visit(this);
   }
 
-  @Override
-  public Object getValue() {
+  public Operator getValue() {
     return value;
   }
 
-  @Override
   public TreeNode getLeft() {
     return left;
   }
 
-  @Override
+
   public TreeNode getRight() {
     return right;
   }

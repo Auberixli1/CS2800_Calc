@@ -32,23 +32,12 @@ public class NumberNode implements TreeNode {
     this.right = right;
   }
 
-  @Override
-  public Object getValue() {
+  public float getValue() {
     return value;
   }
 
   @Override
   public void accept(Visitor visitor) {
     visitor.visit(this);
-  }
-
-  @Override
-  public TreeNode getLeft() {
-    return left;
-  }
-
-  @Override
-  public TreeNode getRight() {
-    return right;
   }
 }

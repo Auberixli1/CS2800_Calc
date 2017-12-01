@@ -1,5 +1,7 @@
 package calc;
 
+import java.util.Stack;
+
 /**
  * This class implements the calculator for the purpose of evaluating the calculation if it is
  * written in reverse polish.
@@ -15,4 +17,5 @@ public class RevPolishCalc implements Calculator {
   public float evaluate(String expr) {
     return 0;
   }
+
 }
