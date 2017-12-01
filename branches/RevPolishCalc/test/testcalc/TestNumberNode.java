@@ -15,14 +15,14 @@ public class TestNumberNode {
   //Test 40 - Tests setter and getter for value
   @Test
   public void valueGetter() {
-    NumberNode numberNode = new NumberNode(1, null, null);
+    NumberNode numberNode = new NumberNode(1);
     assertEquals("set=get", 1.0f, numberNode.getValue(), 0.0f);
   }
 
   // Test 52 - Tests the accept method
   @Test
   public void acceptVisitor() {
-    TreeNode node = new NumberNode(0, null, null);
+    TreeNode node = new NumberNode(0);
     CalcVisitor visit = new CalcVisitor();
     node.accept(visit);
     assertEquals("acceptVisitor=node", node, visit.getCurNode());

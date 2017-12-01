@@ -22,7 +22,7 @@ public class TestCalcVisitor {
   @Test
   public void visitNumNode() {
     visitor = new CalcVisitor();
-    TreeNode node = new NumberNode(2, null, null);
+    TreeNode node = new NumberNode(2);
     visitor.visit((NumberNode) node);
     NumberNode curNode = (NumberNode) visitor.getCurNode();
     assertEquals("visitedNode=NumberNode", 2.0f, curNode.getValue(), 0.0f);

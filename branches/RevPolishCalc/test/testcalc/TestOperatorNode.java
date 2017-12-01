@@ -44,7 +44,7 @@ public class TestOperatorNode {
   //Test 46 - Tests the left getter using number node
   @Test
   public void leftGetterNum() {
-    OperatorNode node = new OperatorNode(null, new NumberNode(2, null, null), null);
+    OperatorNode node = new OperatorNode(null, new NumberNode(2), null);
     NumberNode leftNode = (NumberNode) node.getLeft();
     assertEquals("leftNode=2", 2.0f, leftNode.getValue(), 0.0f);
   }
@@ -52,7 +52,7 @@ public class TestOperatorNode {
   //Test 47 - Tests the right getter using number node
   @Test
   public void rightGetterNum() {
-    OperatorNode node = new OperatorNode(null, null, new NumberNode(3, null, null));
+    OperatorNode node = new OperatorNode(null, null, new NumberNode(3));
     NumberNode rightNode = (NumberNode) node.getRight();
     assertEquals("rightNode=3", 3.0f, rightNode.getValue(), 0.0f);
   }
