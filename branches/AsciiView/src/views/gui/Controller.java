@@ -1,4 +1,4 @@
-package gui;
+package views.gui;
 
 /**
  * This class controls the UIs. It communicates between the model and the views.
@@ -13,21 +13,21 @@ public class Controller {
    */
   private Model model;
   /**
-   * This field stores the current view of the application, either ASCII or GUI.
+   * This field stores the current GUIView of the application, either ASCII or GUI.
    */
-  private View view;
+  private GUIView GUIView;
 
   /**
    * This constructor creates the listener for the button.
    * @param model The current model of the system.
-   * @param view The current view.
+   * @param GUIView The current GUIView.
    */
-  Controller(Model model, View view) {
+  Controller(Model model, GUIView GUIView) {
     this.model = model;
-    this.view = view;
+    this.GUIView = GUIView;
 
-    // This lambda function creates an ActionEvent to set the answer of the view to the answer from
+    // This lambda function creates an ActionEvent to set the answer of the GUIView to the answer from
     // the model.
-    view.addCalcListener(actionEvent -> view.setAns(model.getAns()));
+    GUIView.addCalcListener(actionEvent -> GUIView.setAns(model.getAns()));
   }
 }

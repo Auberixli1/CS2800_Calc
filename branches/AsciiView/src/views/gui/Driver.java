@@ -1,4 +1,4 @@
-package gui;
+package views.gui;
 
 /**
  * This class is what drives the program, it is responsible for getting the model and the view.
@@ -14,7 +14,7 @@ public class Driver {
    */
   public static void main(String[] args) {
     Model model = new Model();
-    View view = View.getInstance();
-    new Controller(model, view);
+    GUIView guiView = views.gui.GUIView.getInstance();
+    new Controller(model, guiView);
   }
 }

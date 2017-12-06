@@ -1,4 +1,4 @@
-package gui;
+package views.gui;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -19,12 +19,12 @@ import javafx.stage.Stage;
  * @author Marcus Messer
  */
 
-public class View extends Application {
+public class GUIView extends Application {
 
   /**
    * This field stores the instance of this class, as this class is a singleton.
    */
-  private volatile static View instance = null;
+  private volatile static GUIView instance = null;
   /**
    * This field is for the calculate button, which is derived from the FXML.
    */
@@ -46,10 +46,10 @@ public class View extends Application {
    * the GUI.
    * @return The instance of this class.
    */
-  public synchronized static View getInstance() {
+  public synchronized static GUIView getInstance() {
     if (instance == null) {
       // Lambda expression creates new thread and launches the GUI.
-      new Thread(() -> Application.launch(View.class)).start();
+      new Thread(() -> Application.launch(GUIView.class)).start();
     }
 
     // Loops until JavaFX initializes.

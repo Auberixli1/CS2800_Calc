@@ -1,4 +1,4 @@
-package gui;
+package views.gui;
 
 /**
  * This class will be used to communicate the calculation to the controller.
