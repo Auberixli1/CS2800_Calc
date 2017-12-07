@@ -33,5 +33,5 @@ public interface View {
    * Polish or In Fix.
    * @param consumer A getter for the type of value.
    */
-  void addTypeObserver(Consumer<Boolean> consumer);
+  void addTypeObserver(Consumer<OperationType> consumer);
 }

@@ -2,6 +2,8 @@ package views.ascii;
 
 import java.util.Scanner;
 import java.util.function.Consumer;
+
+import views.OperationType;
 import views.View;
 
 /**
@@ -24,6 +26,7 @@ public class AsciiView implements View {
    */
   private String answer;
 
+  private OperationType opType;
   /**
    * This empty constructor is so this class cannot be instantiated more than once.
    */
@@ -42,11 +45,30 @@ public class AsciiView implements View {
     return instance;
   }
 
+  public void runCalc() {
+    String input;
+    printMenu();
+
+    input = getInput();
+
+    switch (input) {
+      case "1":
+        opType = OperationType.INFIX;
+        break;
+      case "2":
+        opType = OperationType.POSTFIX;
+        break;
+      default:
+        System.out.println("Please select a valid choice.");
+        break;
+    }
+  }
+
   /**
    * This method prints the menu for the user to select the type of expression they are going
    * to enter.
    */
-  public void  printMenu() {
+  private void  printMenu() {
     System.out.println("Please select a type:");
     System.out.println("1: Infix");
     System.out.println("2: Reverse Polish");
@@ -77,15 +99,15 @@ public class AsciiView implements View {
   }
 
   @Override
-  public void addTypeObserver(Consumer<Boolean> consumer) {
-
+  public void addTypeObserver(Consumer<OperationType> consumer) {
+    consumer.accept(opType);
   }
 
   /**
    * This method gets the users input.
    * @return A string of the users input.
    */
-  public String getInput() {
+  private String getInput() {
     Scanner in = new Scanner(System.in);
     return in.nextLine();
   }
