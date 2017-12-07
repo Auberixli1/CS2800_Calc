@@ -2,7 +2,7 @@ package views.gui;
 
 /**
  * This class controls the UIs. It communicates between the model and the views.
- * This code is adapted from code suppplied by Dave Cohen.
+ * This code is adapted from code supplied by Dave Cohen.
  *
  * @author Marcus Messer
  */
