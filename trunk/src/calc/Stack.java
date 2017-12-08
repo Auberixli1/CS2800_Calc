@@ -81,7 +81,6 @@ public class Stack {
    * This method checks to see if two stacks are equal.
    *
    * @param object the object that is being checked against this object.
-   *
    * @return True if the stacks are equal and False if they are not equal.
    */
   @Override
@@ -93,7 +92,7 @@ public class Stack {
     if (!(object instanceof Stack)) {
       return false;
     }
-    Stack stack = (Stack)object;
+    Stack stack = (Stack) object;
     return (this.size == stack.size && this.entries.equals(stack.entries));
   }
 
