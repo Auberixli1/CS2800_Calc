@@ -1,4 +1,7 @@
-package views.gui;
+package controller;
+
+import calc.CalcModel;
+import views.gui.GUIView;
 
 /**
  * This class is what drives the program, it is responsible for getting the model and the view.
@@ -13,7 +16,7 @@ public class Driver {
    * @param args The starting arguments supplied on start.
    */
   public static void main(String[] args) {
-    Model model = new Model();
+    CalcModel model = new CalcModel();
     GUIView guiView = views.gui.GUIView.getInstance();
     new Controller(model, guiView);
   }
