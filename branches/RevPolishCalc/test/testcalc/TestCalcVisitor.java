@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 public class TestCalcVisitor {
   private CalcVisitor visitor;
@@ -24,17 +23,15 @@ public class TestCalcVisitor {
     visitor = new CalcVisitor();
     TreeNode node = new NumberNode(2);
     visitor.visit((NumberNode) node);
-    NumberNode curNode = (NumberNode) visitor.getCurNode();
-    assertEquals("visitedNode=NumberNode", 2.0f, curNode.getValue(), 0.0f);
+    assertEquals("visitedNode=NumberNode", 2.0f, visitor.getAnswer(), 0.0f);
   }
 
   //Test 51 - Tests the visit for the Operator Node
   @Test
   public void visitOpNode() {
     visitor = new CalcVisitor();
-    TreeNode node = new OperatorNode(Plus.getInstance(), null, null);
+    TreeNode node = new OperatorNode(Plus.getInstance(), new NumberNode(0), new NumberNode(1));
     visitor.visit((OperatorNode) node);
-    OperatorNode curNode = (OperatorNode) visitor.getCurNode();
-    assertEquals("visitedNode=OpNode", Plus.getInstance(), curNode.getValue());
+    assertEquals("visitedNode=OpNode", 1.0f, visitor.getAnswer(), 0.0f);
   }
 }

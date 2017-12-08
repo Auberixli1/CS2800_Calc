@@ -14,17 +14,18 @@ public class Plus implements Operator {
   private static Plus instance = new Plus();
 
   /**
+   * This method is an empty constructor that can only be called from within this class.
+   */
+  private Plus() {
+  }
+
+  /**
    * This method gets the instance of this class.
+   *
    * @return The current instance.
    */
   public static Plus getInstance() {
     return instance;
-  }
-
-  /**
-   * This method is an empty constructor that can only be called from within this class.
-   */
-  private Plus() {
   }
 
   /**

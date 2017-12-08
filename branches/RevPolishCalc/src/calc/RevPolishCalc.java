@@ -16,17 +16,13 @@ public class RevPolishCalc implements Calculator {
   @Override
   public float evaluate(String expr) {
     TreeNode root = makeTree(expr);
-    if (root.getClass() == NumberNode.class) {
-      NumberNode rootNum = (NumberNode) root;
-      return rootNum.getValue();
-    } else {
-      OperatorNode rootOp = (OperatorNode) root;
-      NumberNode left = (NumberNode) rootOp.getLeft();
-      NumberNode right = (NumberNode) rootOp.getRight();
 
-      return rootOp.getValue().calculate(left.getValue(), right.getValue());
+    root.accept(new CalcVisitor());
+
+    CalcVisitor visitor = new CalcVisitor();
+    visitor.visit((OperatorNode) root);
+    return visitor.getAnswer();
     }
-  }
 
   private TreeNode makeTree(String expr) {
     TreeNode root;
@@ -35,12 +31,28 @@ public class RevPolishCalc implements Calculator {
       if (Character.isDigit(expr.charAt(i))) {
         stack.push(new NumberNode(Float.parseFloat(String.valueOf(expr.charAt(i)))));
       } else {
-        stack.push(new OperatorNode(Plus.getInstance(), stack.pop(), stack.pop()));
+        stack.push(new OperatorNode(getOp(expr.charAt(i)), stack.pop(), stack.pop()));
       }
     }
 
     root = stack.pop();
     return root;
+  }
+
+  private Operator getOp(char c) {
+    switch (c) {
+      case '+':
+        return Plus.getInstance();
+      case '-':
+        return Subtract.getInstance();
+      case '*':
+        return Multiply.getInstance();
+      case '/':
+        return Divide.getInstance();
+      default:
+        break;
+    }
+    return null;
   }
 
 }

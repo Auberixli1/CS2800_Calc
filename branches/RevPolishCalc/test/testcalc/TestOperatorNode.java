@@ -57,12 +57,4 @@ public class TestOperatorNode {
     assertEquals("rightNode=3", 3.0f, rightNode.getValue(), 0.0f);
   }
 
-  //Test 53 - Tests the accept method
-  @Test
-  public void acceptVisit() {
-    OperatorNode node = new OperatorNode(Plus.getInstance(), null, null);
-    CalcVisitor visitor = new CalcVisitor();
-    node.accept(visitor);
-    assertEquals("node=vistiedNode", node, visitor.getCurNode());
-  }
 }

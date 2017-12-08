@@ -14,6 +14,7 @@ public class NumberNode implements TreeNode {
 
   /**
    * This constructor makes a new node that sets the payload and, the left and right nodes.
+   *
    * @param value The current payload of the node.
    */
   public NumberNode(float value) {

@@ -19,12 +19,4 @@ public class TestNumberNode {
     assertEquals("set=get", 1.0f, numberNode.getValue(), 0.0f);
   }
 
-  // Test 52 - Tests the accept method
-  @Test
-  public void acceptVisitor() {
-    TreeNode node = new NumberNode(0);
-    CalcVisitor visit = new CalcVisitor();
-    node.accept(visit);
-    assertEquals("acceptVisitor=node", node, visit.getCurNode());
-  }
 }

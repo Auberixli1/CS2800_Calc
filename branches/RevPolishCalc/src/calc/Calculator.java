@@ -10,6 +10,7 @@ public interface Calculator {
 
   /**
    * This method evaluates the expression to be calculated.
+   *
    * @param expr The string expression inputted by the user.
    * @return The answer to the expression.
    */

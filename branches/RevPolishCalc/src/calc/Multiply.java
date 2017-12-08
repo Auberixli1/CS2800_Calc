@@ -14,7 +14,14 @@ public class Multiply implements Operator {
   private static Multiply instance = new Multiply();
 
   /**
+   * This method is an empty constructor, that can only be called from within this class.
+   */
+  private Multiply() {
+  }
+
+  /**
    * This method gets the current instance of the class.
+   *
    * @return The current instance.
    */
   public static Multiply getInstance() {
@@ -22,13 +29,8 @@ public class Multiply implements Operator {
   }
 
   /**
-   * This method is an empty constructor, that can only be called from within this class.
-   */
-  private Multiply() {
-  }
-
-  /**
    * This method calculates x * y.
+   *
    * @param x The first (left hand) number.
    * @param y The second (right hand) number.
    * @return The answer of x * y.

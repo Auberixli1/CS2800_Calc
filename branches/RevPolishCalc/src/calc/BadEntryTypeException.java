@@ -7,6 +7,7 @@ package calc;
  */
 
 public class BadEntryTypeException extends Exception {
+
   /**
    * Version ID of this exception, for use in the JVM when serialised.
    */
@@ -16,7 +17,7 @@ public class BadEntryTypeException extends Exception {
    * The constructor for this exception, which throws a custom message to the user.
    *
    * @param expected the expected type for the method that throws the exception.
-   * @param actual   the actual type of the Entry.
+   * @param actual the actual type of the Entry.
    */
   public BadEntryTypeException(EntryType expected, EntryType actual) {
     super("BadEntryTypeException: expected: " + expected + ", actual: " + actual);
