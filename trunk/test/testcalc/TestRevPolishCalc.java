@@ -2,9 +2,7 @@ package testcalc;
 
 import static org.junit.Assert.assertEquals;
 
-import calc.BadEntryTypeException;
 import calc.Calculator;
-import calc.EmptyStackException;
 import calc.InvalidExpressionException;
 import calc.RevPolishCalc;
 import org.junit.Before;

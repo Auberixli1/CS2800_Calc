@@ -1,22 +1,17 @@
 package views.ascii;
 
-import calc.Symbol;
 import java.util.Scanner;
 import java.util.function.Consumer;
-
 import views.OperationType;
 import views.View;
 
 /**
  * This class implements the view interface to communicate to the controller.
+ *
  * @author Marcus Messer
  */
 public class AsciiView implements View, Runnable {
 
-  /**
-   * This field is the instance of this singleton class.
-   */
-  private volatile static AsciiView instance = null;
 
   /**
    * This field is the expression that user enters to calculate.
@@ -27,7 +22,16 @@ public class AsciiView implements View, Runnable {
    */
   private String answer;
 
+  /**
+   * This field stores the operation type.
+   */
   private OperationType opType;
+
+  /**
+   * This field is the instance of this singleton class.
+   */
+  private volatile static AsciiView instance = null;
+
   /**
    * This empty constructor is so this class cannot be instantiated more than once.
    */
@@ -37,6 +41,7 @@ public class AsciiView implements View, Runnable {
 
   /**
    * This method gets the instance of this singleton class, if the instance is null, it creates one.
+   *
    * @return The instance of the class.
    */
   public static synchronized AsciiView getInstance() {
@@ -82,7 +87,7 @@ public class AsciiView implements View, Runnable {
    * This method prints the menu for the user to select the type of expression they are going
    * to enter.
    */
-  private void  printMenu() {
+  private void printMenu() {
     System.out.println("Please select a type:");
     System.out.println("1: Infix");
     System.out.println("2: Reverse Polish");
@@ -91,6 +96,7 @@ public class AsciiView implements View, Runnable {
 
   /**
    * This method gets the expression that the user enters.
+   *
    * @return The expression to be calculated.
    */
   @Override
@@ -101,6 +107,7 @@ public class AsciiView implements View, Runnable {
 
   /**
    * This method sets the answer that is going to be printed to the user.
+   *
    * @param answer The answer of the expression.
    */
   @Override
@@ -110,6 +117,7 @@ public class AsciiView implements View, Runnable {
 
   /**
    * This method adds a runnable observer.
+   *
    * @param runnable The instance of the calculator.
    */
   public void addCalcObserver(Runnable runnable) {
@@ -118,6 +126,7 @@ public class AsciiView implements View, Runnable {
 
   /**
    * This method adds a observer to the type of the expression.
+   *
    * @param consumer A getter for the type of value.
    */
   public void addTypeObserver(Consumer<OperationType> consumer) {
@@ -126,6 +135,7 @@ public class AsciiView implements View, Runnable {
 
   /**
    * This method gets the users input.
+   *
    * @return A string of the users input.
    */
   private String getInput() {

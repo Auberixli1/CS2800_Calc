@@ -27,6 +27,7 @@ public class CalcModel {
 
   /**
    * This method checks if the expression is infix or not and evaluates it accordingly.
+   *
    * @param expression The expression the user entered.
    * @param isInfix If the expression is infix or not.
    * @return The answer.

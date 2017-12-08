@@ -2,7 +2,7 @@ package controller;
 
 import calc.CalcModel;
 import views.OperationType;
-import views.gui.GUIView;
+import views.gui.GuiView;
 
 /**
  * This class controls the UIs. It communicates between the model and the views.
@@ -20,25 +20,27 @@ public class Controller {
   /**
    * This field stores the current guiView of the application, either ASCII or GUI.
    */
-  private views.gui.GUIView guiView;
+  private GuiView guiView;
 
   /**
    * This constructor creates the listener for the button.
+   *
    * @param model The current model of the system.
    * @param guiView The current guiView.
    */
-  Controller(CalcModel model, GUIView guiView) {
+  Controller(CalcModel model, GuiView guiView) {
     this.model = model;
     this.guiView = guiView;
 
-    // This lambda function creates an ActionEvent to set the answer of the guiView to the answer from
-    // the model.
+    // This lambda function creates an ActionEvent to set the answer of the guiView to the answer
+    // from the model.
     guiView.addCalcListener(actionEvent -> guiView.setAnswer(calculate()));
     guiView.addTypeObserver(actionEvent -> guiView.setType());
   }
 
   /**
    * Communicates between the model and the views.
+   *
    * @return The answer.
    */
   private String calculate() {

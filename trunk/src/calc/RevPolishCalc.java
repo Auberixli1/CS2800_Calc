@@ -32,6 +32,7 @@ public class RevPolishCalc implements Calculator {
 
   /**
    * This method makes a tree from the users input.
+   *
    * @param expr the users input.
    * @return The root node to the tree.
    */
@@ -52,6 +53,7 @@ public class RevPolishCalc implements Calculator {
 
   /**
    * This method gets the operator represented by the char.
+   *
    * @param c The inputted Symbol.
    * @return The Symbol instance.
    */
