@@ -1,4 +1,4 @@
-package tests.testcalc;
+package testcalc;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -6,8 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import calc.BadEntryTypeException;
 import calc.Entry;
-import calc.Symbol;
 import calc.EntryType;
+import calc.Symbol;
 import org.junit.Test;
 
 public class TestEntry {
@@ -123,7 +123,7 @@ public class TestEntry {
     assertTrue("hashCode = otherEntry.hashCode", entry.hashCode() == otherEntry.hashCode());
   }
 
-  // Test 27 - Tests if the equals method returns false when the object is null
+  // Test 28 - Tests if the equals method returns false when the object is null
   @Test
   public void equalNull() {
     Object object = null;
