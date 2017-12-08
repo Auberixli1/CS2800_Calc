@@ -19,6 +19,7 @@ public class Controller {
 
   /**
    * This constructor creates the listener for the button.
+   *
    * @param model The current model of the system.
    * @param view The current view.
    */

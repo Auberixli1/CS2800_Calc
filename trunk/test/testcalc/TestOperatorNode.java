@@ -2,15 +2,11 @@ package testcalc;
 
 import static org.junit.Assert.assertEquals;
 
-import calc.CalcVisitor;
 import calc.Divide;
 import calc.NumberNode;
-import calc.Operator;
 import calc.OperatorNode;
 import calc.Plus;
 import calc.Subtract;
-import calc.TreeNode;
-import calc.Visitor;
 import org.junit.Test;
 
 public class TestOperatorNode {

@@ -21,6 +21,7 @@ public class OperatorStack {
 
   /**
    * This method pushes a symbol onto the stack.
+   *
    * @param symbol The symbol to pushed on to the stack.
    */
   public void push(Symbol symbol) {
@@ -29,6 +30,7 @@ public class OperatorStack {
 
   /**
    * This method pops the top symbol off the stack.
+   *
    * @return A symbol.
    * @throws EmptyStackException Is thrown if the stack is empty.
    * @throws BadEntryTypeException Is thrown if a bad entry type is entered.
@@ -40,6 +42,7 @@ public class OperatorStack {
 
   /**
    * This method peeks at the top of the stack without popping it.
+   *
    * @return A symbol.
    * @throws EmptyStackException Is thrown if the stack is empty.
    * @throws BadEntryTypeException Is thrown of a bad entry type is entered.
@@ -50,6 +53,7 @@ public class OperatorStack {
 
   /**
    * This method checks if th stack is empty.
+   *
    * @return True if the stack is empty and false if the stack has at least one item.
    */
   public Boolean isEmpty() {

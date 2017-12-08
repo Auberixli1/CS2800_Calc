@@ -49,6 +49,7 @@ public enum Symbol {
 
   /**
    * This constructor associates precedence and the char symbol to the enum item.
+   *
    * @param precedence The precedence of the symbol.
    * @param symbol The symbol represented as a char.
    */
@@ -59,6 +60,7 @@ public enum Symbol {
 
   /**
    * Gets the precedence of the symbol.
+   *
    * @return The precedence as an integer.
    */
   public int getPrecedence() {
@@ -67,6 +69,7 @@ public enum Symbol {
 
   /**
    * Gets the symbol as a char.
+   *
    * @return A char of the symbol it is associated to.
    */
   public char getSymbol() {

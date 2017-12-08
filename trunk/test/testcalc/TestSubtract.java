@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestSubtract {
+
   private Operator sub;
 
   @Before
@@ -18,7 +19,7 @@ public class TestSubtract {
   //Test 30 - tests if subtract class subtracts two numbers
   @Test
   public void subIntsPosAns() {
-    assertEquals("4-2=2", 2, sub.calculate(4,2), 0.0f);
+    assertEquals("4-2=2", 2, sub.calculate(4, 2), 0.0f);
   }
 
   //Test 31 - Tests if subtract can handle returning a negative answer

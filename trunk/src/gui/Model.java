@@ -10,6 +10,7 @@ public class Model {
 
   /**
    * Temp method that returns the answer.
+   *
    * @return The answer to the calculation.
    */
   public String getAns() {

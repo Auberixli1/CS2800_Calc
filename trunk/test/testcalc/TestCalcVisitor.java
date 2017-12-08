@@ -1,5 +1,7 @@
 package testcalc;
 
+import static org.junit.Assert.assertEquals;
+
 import calc.CalcVisitor;
 import calc.NumberNode;
 import calc.OperatorNode;
@@ -8,15 +10,15 @@ import calc.TreeNode;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
 public class TestCalcVisitor {
+
   private CalcVisitor visitor;
 
   @Before
   public void setUp() {
     visitor = new CalcVisitor();
   }
+
   //Test 50 - Tests the visit for Number Nodes
   @Test
   public void visitNumNode() {
