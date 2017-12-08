@@ -10,6 +10,7 @@ public class RevPolishCalc implements Calculator {
 
   /**
    * The method that calculates the answer to the evaluate method.
+   *
    * @param expr The string expression inputted by the user.
    * @return The answer to the expression.
    */
@@ -22,7 +23,7 @@ public class RevPolishCalc implements Calculator {
     CalcVisitor visitor = new CalcVisitor();
     visitor.visit((OperatorNode) root);
     return visitor.getAnswer();
-    }
+  }
 
   private TreeNode makeTree(String expr) {
     TreeNode root;

@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestDivide {
+
   private Operator div;
 
   @Before
@@ -18,7 +19,7 @@ public class TestDivide {
   //Test 33 - Tests if calculate correctly divides two numbers.
   @Test
   public void divInts() {
-    assertEquals("4/2=2", 2, div.calculate(4,2), 0.0f);
+    assertEquals("4/2=2", 2, div.calculate(4, 2), 0.0f);
   }
 
   //Test 34 - Tests improper fraction

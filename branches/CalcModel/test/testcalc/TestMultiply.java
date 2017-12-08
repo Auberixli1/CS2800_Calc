@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestMultiply {
+
   private Operator mul;
 
   @Before
@@ -18,7 +19,7 @@ public class TestMultiply {
   //Test 32 - Tests if calculate correctly multiplies two numbers
   @Test
   public void mulInts() {
-    assertEquals("2*2=4", 4, mul.calculate(2,2), 0.0f);
+    assertEquals("2*2=4", 4, mul.calculate(2, 2), 0.0f);
   }
 
   //Test 38 - Tests with floats

@@ -34,13 +34,12 @@ public class InFixCalc implements Calculator {
   /**
    * This method converts the expression from the user to post fix and passes it to the postfix
    * calculator.
+   *
    * @param expr The string expression inputted by the user.
    * @return The answer to the expression.
-   * @throws BadEntryTypeException This is thrown if a bad entry type is entered.
-   * @throws EmptyStackException This is thrown if the stack is empty.
    */
   @Override
-  public float evaluate(String expr) throws BadEntryTypeException, EmptyStackException {
+  public float evaluate(String expr) {
     postfix = new StringBuilder();
 
     for (char c : expr.toCharArray()) {
@@ -53,10 +52,16 @@ public class InFixCalc implements Calculator {
             operatorStack.push(Symbol.LEFT_BRACKET);
             break;
           case ')':
-            while (operatorStack.peek() != Symbol.LEFT_BRACKET) {
-              postfix.append(operatorStack.pop().getSymbol());
+            Symbol temp = null;
+            try {
+              temp = operatorStack.peek();
+              while (temp != Symbol.LEFT_BRACKET) {
+                postfix.append(operatorStack.pop().getSymbol());
+              }
+              operatorStack.pop();
+            } catch (EmptyStackException | BadEntryTypeException e) {
+              e.printStackTrace();
             }
-            operatorStack.pop();
             break;
           case '/':
             shuntingYard(Symbol.DIVIDE);
@@ -78,7 +83,11 @@ public class InFixCalc implements Calculator {
     }
 
     while (!operatorStack.isEmpty()) {
-      postfix.append(operatorStack.pop().getSymbol());
+      try {
+        postfix.append(operatorStack.pop().getSymbol());
+      } catch (EmptyStackException | BadEntryTypeException e) {
+        e.printStackTrace();
+      }
     }
 
     return postFixCalc.evaluate(postfix.toString());
@@ -86,17 +95,20 @@ public class InFixCalc implements Calculator {
 
   /**
    * This method does the symbol comparison of the shunting yard algorithm.
+   *
    * @param symbol The current symbol token.
-   * @throws BadEntryTypeException Is thrown when a bad entry type is inputted.
-   * @throws EmptyStackException Is thrown when the stack is empty.
    */
-  private void shuntingYard(Symbol symbol) throws BadEntryTypeException, EmptyStackException {
+  private void shuntingYard(Symbol symbol) {
     if (operatorStack.isEmpty()) {
       operatorStack.push(symbol);
       return;
     }
-    if (operatorStack.peek().getPrecedence() > symbol.getPrecedence()) {
-      postfix.append(operatorStack.pop().getSymbol());
+    try {
+      if (operatorStack.peek().getPrecedence() > symbol.getPrecedence()) {
+        postfix.append(operatorStack.pop().getSymbol());
+      }
+    } catch (EmptyStackException | BadEntryTypeException e) {
+      e.printStackTrace();
     }
     operatorStack.push(symbol);
   }

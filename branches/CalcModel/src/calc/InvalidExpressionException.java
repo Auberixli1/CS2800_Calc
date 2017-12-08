@@ -3,7 +3,7 @@ package calc;
 /**
  * This exception is thrown when the user inputs a invalid expression.
  */
-public class InvalidExpressionException  extends Exception {
+public class InvalidExpressionException extends Exception {
 
   /**
    * Version ID of this exception, for use in the JVM when serialised.
