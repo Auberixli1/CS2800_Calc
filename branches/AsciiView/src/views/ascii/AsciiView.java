@@ -1,5 +1,6 @@
 package views.ascii;
 
+import calc.Symbol;
 import java.util.Scanner;
 import java.util.function.Consumer;
 
@@ -10,7 +11,7 @@ import views.View;
  * This class implements the view interface to communicate to the controller.
  * @author Marcus Messer
  */
-public class AsciiView implements View {
+public class AsciiView implements View, Runnable {
 
   /**
    * This field is the instance of this singleton class.
@@ -20,7 +21,7 @@ public class AsciiView implements View {
   /**
    * This field is the expression that user enters to calculate.
    */
-  private String expression = "1+2";
+  private String expression;
   /**
    * This field is the answer that is returned from the calculator.
    */
@@ -45,22 +46,35 @@ public class AsciiView implements View {
     return instance;
   }
 
-  public void runCalc() {
-    String input;
-    printMenu();
+  /**
+   * This method runs the calculator.
+   */
+  private void runCalc() {
+    String input = "";
+    while (!input.equals("q")) {
+      printMenu();
 
-    input = getInput();
+      input = getInput();
 
-    switch (input) {
-      case "1":
-        opType = OperationType.INFIX;
-        break;
-      case "2":
-        opType = OperationType.POSTFIX;
-        break;
-      default:
-        System.out.println("Please select a valid choice.");
-        break;
+      switch (input) {
+        case "1":
+          opType = OperationType.INFIX;
+          break;
+        case "2":
+          opType = OperationType.POSTFIX;
+          break;
+        default:
+          System.out.println("Please select a valid choice.");
+          break;
+      }
+
+      System.out.println("Enter Expression:");
+      expression = getInput();
+
+      while (answer.equals("")) {
+        System.out.println("Calculating");
+      }
+      System.out.println("Answer: ");
     }
   }
 
@@ -72,6 +86,7 @@ public class AsciiView implements View {
     System.out.println("Please select a type:");
     System.out.println("1: Infix");
     System.out.println("2: Reverse Polish");
+    System.out.println("q: Quit");
   }
 
   /**
@@ -93,11 +108,19 @@ public class AsciiView implements View {
     this.answer = answer;
   }
 
+  /**
+   * This method adds a runnable observer.
+   * @param runnable The instance of the calculator.
+   */
   @Override
   public void addCalcObserver(Runnable runnable) {
-
+    runnable.run();
   }
 
+  /**
+   * This method adds a observer to the type of the expression.
+   * @param consumer A getter for the type of value.
+   */
   @Override
   public void addTypeObserver(Consumer<OperationType> consumer) {
     consumer.accept(opType);
@@ -110,5 +133,13 @@ public class AsciiView implements View {
   private String getInput() {
     Scanner in = new Scanner(System.in);
     return in.nextLine();
+  }
+
+  /**
+   * This method is implemented from the Runnable interface.
+   */
+  @Override
+  public void run() {
+    runCalc();
   }
 }
