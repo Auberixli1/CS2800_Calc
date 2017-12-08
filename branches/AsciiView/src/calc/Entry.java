@@ -111,17 +111,17 @@ public class Entry {
    * @param object the object that we want to check if they are equal.
    * @return Returns a boolean true for they are equal, and false for not equal.
    * @throws BadEntryTypeException as the getters are used throws this exception if the wrong getter is used for
-   *                 the entryType.
+   * the entryType.
    */
   @Override
-  public boolean equals(Object object)  {
+  public boolean equals(Object object) {
     if (object == null) {
       return false;
     }
     if (!(object instanceof Entry)) {
       return false;
     }
-    Entry entry = (Entry)object;
+    Entry entry = (Entry) object;
     if (entry.getEntryType() == this.getEntryType()) {
       switch (entryType) {
         case NUMBER:
@@ -157,7 +157,8 @@ public class Entry {
    */
   @Override
   public String toString() {
-    return  "[value=" + value + ", entryType=" + entryType + ", str=" + str + ", other=" + other + "]";
+    return "[value=" + value + ", entryType=" + entryType + ", str=" + str + ", other=" + other
+        + "]";
   }
 
   /**
