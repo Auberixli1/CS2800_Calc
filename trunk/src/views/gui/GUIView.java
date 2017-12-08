@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import jdk.nashorn.internal.runtime.regexp.joni.constants.OPCode;
 import views.OperationType;
 import views.View;
 
@@ -102,7 +103,7 @@ public class GUIView extends Application implements View {
   /**
    * This method adds the calculate listener method to the button, so when the button is clicked the
    * answer will be calculated and updated.
-   * @param eventHandler Is the listener method in <code>Controller</code>.
+   * @param eventHandler Is the listener method in <code>controller</code>.
    */
   public void addCalcListener(EventHandler<ActionEvent> eventHandler) {
     btnCalc.setOnAction(eventHandler);
@@ -119,5 +120,24 @@ public class GUIView extends Application implements View {
    */
   public void addTypeObserver(EventHandler<ActionEvent> eventHandler) {
     radInFix.setOnAction(eventHandler);
+  }
+
+  /**
+   * Returns the type of the expression.
+   * @return The type of the expression.
+   */
+  public OperationType getType() {
+    return opType;
+  }
+
+  /**
+   * Sets the expression type.
+   */
+  public void setType() {
+    if (opType == OperationType.INFIX) {
+      opType = OperationType.POSTFIX;
+    } else {
+      opType = OperationType.INFIX;
+    }
   }
 }
