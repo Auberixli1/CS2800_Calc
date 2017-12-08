@@ -32,4 +32,10 @@ public class TestRevPolishCalc {
   public void evalComplex() throws InvalidExpressionException {
     assertEquals("eval=63", 63.0f, revPol.evaluate("567+*2-"), 0.0f);
   }
+
+  // Tests inputting a invalid expression
+  @Test(expected = InvalidExpressionException.class)
+  public void invalidExpr() throws InvalidExpressionException {
+    revPol.evaluate("asdf");
+  }
 }

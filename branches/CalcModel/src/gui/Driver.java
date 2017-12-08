@@ -10,6 +10,7 @@ public class Driver {
 
   /**
    * The entry point for the application.
+   *
    * @param args The starting arguments supplied on start.
    */
   public static void main(String[] args) {

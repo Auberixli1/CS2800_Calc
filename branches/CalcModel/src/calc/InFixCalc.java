@@ -1,5 +1,7 @@
 package calc;
 
+import java.util.regex.Pattern;
+
 /**
  * This class implements the calculator interface. It converts an expression in infix to post fix,
  * then evaluated by the postfix calculator.
@@ -39,7 +41,11 @@ public class InFixCalc implements Calculator {
    * @return The answer to the expression.
    */
   @Override
-  public float evaluate(String expr) {
+  public float evaluate(String expr) throws InvalidExpressionException {
+    if (Pattern.matches("[a-zA-z]+", expr)) {
+      throw new InvalidExpressionException();
+    }
+
     postfix = new StringBuilder();
 
     for (char c : expr.toCharArray()) {
