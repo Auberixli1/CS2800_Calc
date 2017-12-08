@@ -1,4 +1,4 @@
-package gui;
+package views.gui;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -19,12 +19,12 @@ import javafx.stage.Stage;
  * @author Marcus Messer
  */
 
-public class View extends Application {
+public class GUIView extends Application {
 
   /**
    * This field stores the instance of this class, as this class is a singleton.
    */
-  private volatile static View instance = null;
+  private volatile static GUIView instance = null;
   /**
    * This field is for the calculate button, which is derived from the FXML.
    */
@@ -44,13 +44,12 @@ public class View extends Application {
   /**
    * This method gets the instance for this class, if it is null it creates a new thread and starts
    * the GUI.
-   *
    * @return The instance of this class.
    */
-  public synchronized static View getInstance() {
+  public synchronized static GUIView getInstance() {
     if (instance == null) {
       // Lambda expression creates new thread and launches the GUI.
-      new Thread(() -> Application.launch(View.class)).start();
+      new Thread(() -> Application.launch(GUIView.class)).start();
     }
 
     // Loops until JavaFX initializes.
@@ -70,7 +69,6 @@ public class View extends Application {
 
   /**
    * This method creates and shows the GUI.
-   *
    * @param primaryStage Is the top-level container for the JavaFX content.
    * @throws Exception Is thrown if an IO exception occurs in FXMLLoader.load.
    */
@@ -84,7 +82,6 @@ public class View extends Application {
 
   /**
    * This setter sets the answer label to what the calculation returns.
-   *
    * @param ans Is the answer to the calculation entered by the user.
    */
   public void setAns(String ans) {
@@ -94,7 +91,6 @@ public class View extends Application {
   /**
    * This method adds the calculate listener method to the button, so when the button is clicked the
    * answer will be calculated and updated.
-   *
    * @param eventHandler Is the listener method in <code>Controller</code>.
    */
   public void addCalcListener(EventHandler<ActionEvent> eventHandler) {

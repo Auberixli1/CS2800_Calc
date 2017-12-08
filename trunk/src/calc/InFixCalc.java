@@ -63,6 +63,7 @@ public class InFixCalc implements Calculator {
               temp = operatorStack.peek();
               while (temp != Symbol.LEFT_BRACKET) {
                 postfix.append(operatorStack.pop().getSymbol());
+                temp = operatorStack.peek();
               }
               operatorStack.pop();
             } catch (EmptyStackException | BadEntryTypeException e) {
