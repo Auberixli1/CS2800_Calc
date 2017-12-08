@@ -14,6 +14,6 @@ public interface Calculator {
    * @param expr The string expression inputted by the user.
    * @return The answer to the expression.
    */
-  float evaluate(String expr);
+  float evaluate(String expr) throws BadEntryTypeException, EmptyStackException;
 
 }
