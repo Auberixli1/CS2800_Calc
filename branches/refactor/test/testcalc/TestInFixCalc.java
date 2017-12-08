@@ -2,8 +2,6 @@ package testcalc;
 
 import static org.junit.Assert.assertEquals;
 
-import calc.BadEntryTypeException;
-import calc.EmptyStackException;
 import calc.InFixCalc;
 import calc.InvalidExpressionException;
 import org.junit.Before;

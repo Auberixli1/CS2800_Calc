@@ -1,6 +1,5 @@
 package views.gui;
 
-import java.util.function.Consumer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import jdk.nashorn.internal.runtime.regexp.joni.constants.OPCode;
 import views.OperationType;
 import views.View;
 
@@ -24,12 +22,12 @@ import views.View;
  * @author Marcus Messer
  */
 
-public class GUIView extends Application implements View {
+public class GuiView extends Application implements View {
 
   /**
    * This field stores the instance of this class, as this class is a singleton.
    */
-  private volatile static GUIView instance = null;
+  private volatile static GuiView instance = null;
   /**
    * This field is for the calculate button, which is derived from the FXML.
    */
@@ -45,6 +43,9 @@ public class GUIView extends Application implements View {
    */
   @FXML
   public TextField txtExpr;
+  /**
+   * This field is for the radio button for infix.
+   */
   public RadioButton radInFix;
 
   /**
@@ -55,12 +56,13 @@ public class GUIView extends Application implements View {
   /**
    * This method gets the instance for this class, if it is null it creates a new thread and starts
    * the GUI.
+   *
    * @return The instance of this class.
    */
-  public synchronized static GUIView getInstance() {
+  public synchronized static GuiView getInstance() {
     if (instance == null) {
       // Lambda expression creates new thread and launches the GUI.
-      new Thread(() -> Application.launch(GUIView.class)).start();
+      new Thread(() -> Application.launch(GuiView.class)).start();
     }
 
     // Loops until JavaFX initializes.
@@ -80,6 +82,7 @@ public class GUIView extends Application implements View {
 
   /**
    * This method creates and shows the GUI.
+   *
    * @param primaryStage Is the top-level container for the JavaFX content.
    * @throws Exception Is thrown if an IO exception occurs in FXMLLoader.load.
    */
@@ -93,6 +96,7 @@ public class GUIView extends Application implements View {
 
   /**
    * This setter sets the answer label to what the calculation returns.
+   *
    * @param ans Is the answer to the calculation entered by the user.
    */
   @Override
@@ -103,6 +107,7 @@ public class GUIView extends Application implements View {
   /**
    * This method adds the calculate listener method to the button, so when the button is clicked the
    * answer will be calculated and updated.
+   *
    * @param eventHandler Is the listener method in <code>controller</code>.
    */
   public void addCalcListener(EventHandler<ActionEvent> eventHandler) {
@@ -116,6 +121,7 @@ public class GUIView extends Application implements View {
 
   /**
    * This method listens to check the type of exprssion.
+   *
    * @param eventHandler Is a listener method.
    */
   public void addTypeObserver(EventHandler<ActionEvent> eventHandler) {
@@ -124,6 +130,7 @@ public class GUIView extends Application implements View {
 
   /**
    * Returns the type of the expression.
+   *
    * @return The type of the expression.
    */
   public OperationType getType() {
