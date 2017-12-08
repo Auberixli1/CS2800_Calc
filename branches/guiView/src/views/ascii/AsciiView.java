@@ -112,7 +112,6 @@ public class AsciiView implements View, Runnable {
    * This method adds a runnable observer.
    * @param runnable The instance of the calculator.
    */
-  @Override
   public void addCalcObserver(Runnable runnable) {
     runnable.run();
   }
@@ -121,7 +120,6 @@ public class AsciiView implements View, Runnable {
    * This method adds a observer to the type of the expression.
    * @param consumer A getter for the type of value.
    */
-  @Override
   public void addTypeObserver(Consumer<OperationType> consumer) {
     consumer.accept(opType);
   }

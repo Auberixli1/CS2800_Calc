@@ -28,6 +28,6 @@ public class Controller {
 
     // This lambda function creates an ActionEvent to set the answer of the GUIView to the answer from
     // the model.
-    GUIView.addCalcListener(actionEvent -> GUIView.setAns(model.getAns()));
+    GUIView.addCalcListener(actionEvent -> GUIView.setAnswer(model.getAns()));
   }
 }
