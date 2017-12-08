@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" vgap="10"
+  xmlns="http://javafx.com/javafx/8.0.121" fx:controller="views.gui.GuiView">
+  <columnConstraints>
+    <ColumnConstraints/>
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints/>
+  </rowConstraints>
+  <children>
+    <Pane prefHeight="200.0" prefWidth="200.0">
+      <children>
+        <Button layoutX="107.0" layoutY="48.0" mnemonicParsing="false" text="Calculate"
+          fx:id="btnCalc"/>
+        <Label layoutX="14.0" layoutY="84.0" text="Answer:" fx:id="lblAns"/>
+        <TextField layoutX="15.0" layoutY="14.0" promptText="Expression" fx:id="txtExpr"/>
+        <RadioButton layoutX="15.0" layoutY="106.0" mnemonicParsing="false" text="Infix"
+          fx:id="radInFix">
+          <toggleGroup>
+            <ToggleGroup fx:id="type"/>
+          </toggleGroup>
+        </RadioButton>
+        <RadioButton layoutX="15.0" layoutY="131.0" mnemonicParsing="false" text="Reverse Polish"
+          toggleGroup="$type" fx:id="radRevPol"/>
+      </children>
+    </Pane>
+  </children>
+</GridPane>
