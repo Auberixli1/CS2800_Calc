@@ -22,16 +22,4 @@ public interface View {
    */
   void setAnswer(String ans);
 
-  /**
-   * Adds an observer to the calculator to check which one is running.
-   * @param runnable The instance of the calculator.
-   */
-  void addCalcObserver(Runnable runnable);
-
-  /**
-   * This method adds an observer to the views to check the type of expression, either Reverse
-   * Polish or In Fix.
-   * @param consumer A getter for the type of value.
-   */
-  void addTypeObserver(Consumer<OperationType> consumer);
 }

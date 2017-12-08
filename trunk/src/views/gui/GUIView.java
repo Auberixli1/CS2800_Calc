@@ -1,5 +1,6 @@
 package views.gui;
 
+import java.util.function.Consumer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,8 +10,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import views.OperationType;
+import views.View;
 
 /**
  * This class is the view for the GUI, it is what starts and sets up the GUI.
@@ -19,7 +23,7 @@ import javafx.stage.Stage;
  * @author Marcus Messer
  */
 
-public class GUIView extends Application {
+public class GUIView extends Application implements View {
 
   /**
    * This field stores the instance of this class, as this class is a singleton.
@@ -40,6 +44,12 @@ public class GUIView extends Application {
    */
   @FXML
   public TextField txtExpr;
+  public RadioButton radInFix;
+
+  /**
+   * This field store the operation type of the calculator.
+   */
+  private OperationType opType;
 
   /**
    * This method gets the instance for this class, if it is null it creates a new thread and starts
@@ -84,7 +94,8 @@ public class GUIView extends Application {
    * This setter sets the answer label to what the calculation returns.
    * @param ans Is the answer to the calculation entered by the user.
    */
-  public void setAns(String ans) {
+  @Override
+  public void setAnswer(String ans) {
     lblAns.setText("Answer: " + ans);
   }
 
@@ -95,5 +106,18 @@ public class GUIView extends Application {
    */
   public void addCalcListener(EventHandler<ActionEvent> eventHandler) {
     btnCalc.setOnAction(eventHandler);
+  }
+
+  @Override
+  public String getExpression() {
+    return txtExpr.getText();
+  }
+
+  /**
+   * This method listens to check the type of exprssion.
+   * @param eventHandler Is a listener method.
+   */
+  public void addTypeObserver(EventHandler<ActionEvent> eventHandler) {
+    radInFix.setOnAction(eventHandler);
   }
 }
